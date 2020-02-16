@@ -1,0 +1,49 @@
+{
+    "codes": {
+        "ERR_200": {
+            "code": 200,
+            "message": "OK",
+            "description": "Todo está bien"
+        },
+        "ERR_201": {
+            "code": 201,
+            "message": "Creado",
+            "description": "El registro se ha creado"
+        },
+        "ERR_204": {
+            "code": 204,
+            "message": "No content",
+            "description": "El registro fue eliminado"
+        },
+        "ERR_304": {
+            "code": 304,
+            "message": "No se modificó",
+            "descripción": "El registro no se modificó"
+        },
+        "ERR_400": {
+            "code": 400,
+            "message": "Mala Petición",
+            "description": "Error en la petición"
+        },
+        "ERR_401": {
+            "code": 401,
+            "message": "Unauthorized",
+            "description": "No autorizado para ejecutar request"
+        },
+        "ERR_403": {
+            "code": 403,
+            "message": "Forbidden",
+            "description": "Prohibido acceder al recurso"
+        },
+        "ERR_404": {
+            "code": 404,
+            "message": "Not Found",
+            "description": "El elemento de búsqueda no fué encontrado"
+        },
+        "ERR_500": {
+            "code": 500,
+            "message": "Internal Server Error",
+            "description": "Error interno del servidor"
+        }
+    }
+}
