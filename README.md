@@ -87,6 +87,37 @@ Response:
     ]
 }
 ```
+### Contenedor Docker
+
+````
+El API REST ya contiene los archivos docker-compose.yml y Dockerfile, que contienen la configuración necesaria para poder correr el contenedor. Se deben correr los siguientes comandos para crear/iniciar el contenedor.
+
+
+docker-compose build
+docker-compose up -d mongo
+docker-compose up 
+
+````
+
 
 ### Notas
+
+````
+El API REST esta diseñado para recibir archivos comprimidos con la extencion tar.xz, por lo que si se intenta subir archivos de tipo *.zip, *.rar, el sistema
+no estará preparado para procesarlos. Es necesario hacer un ajuste en el CasoUsoFiles.js
+```
+            await decompress(zipFile.file.data, 'dist', {
+                plugins: [
+                    decompressTarxz()
+                ]
+            });
+
+````
+La aplicacion tiene comentado la url de MONGODB en el .env para poder conectarse
+a mongoDocker, si se ejecutará por medio de un servidor local, sera necesario descomentar la linea:
+
+< #MONGODB_URL=mongodb://localhost:27017/testfiles >
+```
+
+
 

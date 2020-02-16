@@ -1,7 +1,7 @@
-var CasosUsoFiles = require('../../aplicaciones/casosUso/casosUsoFiles'),
-    RepositorioBDFiles = require('../almacenamiento/repositorioBDFacturas'),
-    Utilerias = require('../../../utilerias/interfaces/controladores/manejadorErrores'),
-    casoUso = new CasosUsoFiles(new RepositorioBDFiles());
+let repositorioBDfacturas = require('../../interfaces/almacenamiento/repositorioBDfacturas')
+var CasosUsoFiles = require('../../aplicaciones/casosUso/casosUsoFiles')
+Utilerias = require('../../../utilerias/interfaces/controladores/manejadorErrores'),
+    casoUso = new CasosUsoFiles(new repositorioBDfacturas());
 exports.persistFacturas = async function(req, res, next) {
     try {
         let response = await casoUso.persistFacturas(req.files);
