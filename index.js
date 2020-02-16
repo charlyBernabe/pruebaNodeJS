@@ -1,6 +1,5 @@
 var express = require('express'),
     app = express(),
-    cors = require('cors'),
     bodyParser = require('body-parser'), // parse HTTP requests  
     port = process.env.PORT || 3000,
     mongoDB = require('./api/configuraciones/infraestructuras/baseDatos/mongoDB');
@@ -43,9 +42,6 @@ app.use(function(req, res, next) {
         next();
     }
 });
-/**Posible configuración para permitir peticiones de diferentes  */
-let allowedOrigins = [];
-app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 let routes = require('./api/fileProcessing/infraestructuras/servidor/rutas/files');
 //Name api&version

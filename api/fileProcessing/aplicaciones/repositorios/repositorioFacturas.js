@@ -8,7 +8,10 @@ module.exports = class {
 
 
     }
-    async repositorioFiles() {
+    async deleteFacturas() {
+
+    }
+    async getInfo() {
 
     }
 };

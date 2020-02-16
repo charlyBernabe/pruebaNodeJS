@@ -1,8 +1,6 @@
-'use strict';
 const FacturaDB = require('../../infraestructuras/baseDatos/facturas');
 const repositorioFacturas = require('../../aplicaciones/repositorios/repositorioFacturas');
-var mongoose = require('mongoose');
-var path = require('path');
+
 
 module.exports = class extends repositorioFacturas {
     constructor() {
@@ -14,7 +12,7 @@ module.exports = class extends repositorioFacturas {
     }
 
 
-    async deleteFacturas(facEntity) {
+    async deleteFacturas() {
         return await FacturaDB.Factura.remove()
     }
     async getInfo() {
