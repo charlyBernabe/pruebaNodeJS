@@ -1,17 +1,19 @@
 var express = require('express'),
     app = express(),
     cors = require('cors'),
-
+    bodyParser = require('body-parser'), // parse HTTP requests  
     port = process.env.PORT || 3000,
     mongoDB = require('./api/configuraciones/infraestructuras/baseDatos/mongoDB');
-
+const fileUpload = require('express-fileupload');
 /** Configuración de variables de entorno locales */
 let dotenv = require('dotenv');
 dotenv.config();
 if (process.env.NODE_ENV !== 'production') {
     dotenv.load();
 }
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(fileUpload());
 /**
  * Conexion con MongoDB
  */
@@ -44,6 +46,7 @@ app.use(function(req, res, next) {
 /**Posible configuración para permitir peticiones de diferentes  */
 let allowedOrigins = [];
 app.use(cors({ origin: allowedOrigins, credentials: true }));
+
 let routes = require('./api/fileProcessing/infraestructuras/servidor/rutas/files');
 //Name api&version
 app.get('/api', (req, res) => {
@@ -53,6 +56,8 @@ app.get('/api', (req, res) => {
         version: '1.0.0',
     });
 });
+/**Importación de rutas */
+app.use('/api', routes);
 /**Error en caso de que no exista la url de la petición */
 app.use(function(req, res) {
     res.status(404).send({
@@ -66,5 +71,3 @@ app.use(function(req, res) {
 app.listen(port, function() {
     console.log('Showroom RESTful API server started on: ' + port);
 });
-/**Importación de rutas */
-app.use('/api', routes);
