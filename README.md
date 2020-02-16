@@ -87,6 +87,15 @@ Response:
     ]
 }
 ```
+### Servidor Local
+
+````
+Para correr el API REST en modo local, es necesario descomentar una variable en el .env : < #MONGODB_URL=mongodb://localhost:27017/testfiles >, para que el API se conecte a MONGODB local.
+
+Una vez teniendo esto listo, solo sera necesario correr el comando npm start, dentro de la carpeta del API.
+
+**Tener en cuenta que es necesario tener corriendo MONGODB sobre el puerto 27017
+````
 ### Contenedor Docker
 
 ````
@@ -98,7 +107,19 @@ docker-compose up -d mongo
 docker-compose up 
 
 ````
+### Notas
 
+Requisitos:
+
+````
+Software requerido:
+
+
+Nodejs 12.16.0
+MongoDB 4.2.0
+Docker 19.03.5
+Visual Studio Code
+````
 
 ### Notas
 
