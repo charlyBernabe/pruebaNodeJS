@@ -17,5 +17,6 @@ var accesoProhibido = function(req, res, err) {
 }
 
 router.post('/saveFiles', controladorFile.persistFacturas);
+router.get('/getInfo', controladorFile.extractInfo);
 
 module.exports = router;

@@ -9,22 +9,39 @@ module.exports = class extends repositorioFacturas {
         super();
     }
     async persistFacturas(facEntity) {
-        var self = this;
-        return new Promise(function(resolve, reject) {
-            var factura = FacturaDB.createFactura(facEntity);
-            factura.save(function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(factura);
-                }
-            })
-
-        })
+        let factura = FacturaDB.createFactura(facEntity);
+        return await factura.save()
     }
 
+
     async deleteFacturas(facEntity) {
-        var self = this;
         return await FacturaDB.Factura.remove()
+    }
+    async getInfo() {
+        let params = [{
+                $unwind: "$detail",
+            },
+            {
+                $unwind: "$detail.item",
+            },
+            {
+                $project: {
+                    "BillNumber": "$billNumber",
+                    'Utilidad_Bruta': {
+                        $subtract: [{
+                            $sum: [{
+                                    $subtract: ["$detail.item.utilidad", "$detail.item.cost"]
+                                },
+                                "$detail.item.incentive"
+                            ]
+                        }, "$detail.item.houseCredit"]
+                    },
+                    "Caracteristicas_Adicionales": { $size: "$detail.item.caracteristicasAdicionales" }
+                }
+            }
+
+        ]
+        return await FacturaDB.Factura.aggregate(params)
+            //return await FacturaDB.Factura.find()
     }
 }

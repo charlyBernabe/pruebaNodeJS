@@ -32,7 +32,7 @@ var facturaSchema = new mongoose.Schema({
     },
     canalVenta: {
         __id: { type: Number, },
-        razonSocial: { type: String, }
+        nombreCanalVenta: { type: String, }
     },
     billNumber: { type: String, },
     sucursal: { type: String, },

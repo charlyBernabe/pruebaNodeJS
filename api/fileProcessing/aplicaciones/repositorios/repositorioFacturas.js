@@ -4,9 +4,11 @@
 'use strict';
 module.exports = class {
     constructor() {}
-    persistFacturas(facturaEntity) {
+    async persistFacturas(facturaEntity) {
 
 
     }
+    async repositorioFiles() {
 
+    }
 };

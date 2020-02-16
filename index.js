@@ -69,5 +69,5 @@ app.use(function(req, res) {
     })
 });
 app.listen(port, function() {
-    console.log('Showroom RESTful API server started on: ' + port);
+    console.log('Backend technical test RESTful API server started on: ' + port);
 });
